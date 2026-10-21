@@ -15,3 +15,15 @@ public class JobService {
         }
     }
 }
+
+
+    public void validateAndLog(Job job) {
+        if (job.getId() == null) {
+            log.error("job validation failed: missing id for job {}", job);
+            throw new ValidationException("missing id");
+        }
+        if (job.getType() == null) {
+            log.error("job validation failed: missing type for job {}", job);
+            throw new ValidationException("missing type");
+        }
+    }
