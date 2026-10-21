@@ -34,3 +34,12 @@ public class JobOrchestrator {
         logger.critical("Job dispatch exhausted retries for " + job.getId());
     }
 }
+
+
+    public void dispatchAll(List<Job> jobs) {
+        for (Job job : jobs) {
+            log.info("dispatching job: {}", job);
+            dispatch(job);
+            log.info("job dispatched: {}", job);
+        }
+    }
